@@ -2,8 +2,13 @@
 
 red='\e[31m'
 green='\e[32m'
-yello='\e[33m'
+yellow='\e[33m'
 blue='\e[34m'
+purple='\e[35m'
+
+bold='\e[1m'
+italic='\e[3m'
+ul='\e[4m'
 clear='\e[0m'
 
 color_red(){
@@ -21,7 +26,8 @@ color_blue(){
 
 run_jupyter() {
      echo ""
-     echo "Starting jupyter"
+     echo "$(color_blue 'Starting jupyter')"
+     echo ""
      source /opt/conda/bin/activate \
   && conda activate gitma \
   && jupyter notebook \
@@ -35,7 +41,8 @@ run_jupyter() {
 
 update_gitma() {
      echo ""
-     echo "Updating GitMA"
+     echo "$(color_blue 'Updating GitMA')"
+     echo ""
      source /opt/conda/bin/activate \
   && conda activate gitma \
   && pip install --upgrade git+https://github.com/forTEXT/gitma \
@@ -44,7 +51,8 @@ update_gitma() {
 
 reinstall_demo(){
      echo ""
-     echo "Deleting old files"
+     echo "$(color_red 'Deleting old files')"
+     echo ""
      rm -rf ./src
      source /opt/conda/bin/activate \
   && conda activate gitma \
@@ -54,50 +62,54 @@ reinstall_demo(){
 
 press_enter() {
   echo ""
-  echo -n "	Press Enter to continue "
+  echo "$bold$(color_blue 'Press Enter to continue')"
   read
   clear
 }
 
 incorrect_selection() {
-  echo "Incorrect selection! Try again."
+  echo "$(color_red 'Incorrect selection!') Try again."
 }
 
 print_logo(){
-echo -ne "  
- _______    ________  _________  ___ __ __   ________      
-/______/\\  /_______/\\/________/\\/__//_//_/\\ /_______/\\     
-\\::::__\\/__\\__.::._\\/\\__.::.__\\/\\::\\| \\| \\ \\\\::: _  \\ \\    
- \\:\\ /____/\\  \\::\\ \\    \\::\\ \\   \\:.      \\ \\\\::(_)  \\ \\   
-  \\:\\\\_  _\\/  _\\::\\ \\__  \\::\\ \\   \\:.\\-/\\  \\ \\\\:: __  \\ \\  
-   \\:\\_\\ \\ \\ /__\\::\\__/\\  \\::\\ \\   \\. \\  \\  \\ \\\\:.\\ \\  \\ \\ 
-    \\_____\\/ \\________\\/   \\__\\/    \\__\\/ \\__\\/ \\__\\/\\__\\/ 
-
-
-    "                                                           
+  echo -ne " 
+  $bold
+  $blue        ___                              $purple     ___           ___      
+  $blue       /  /\        ___           ___    $purple    /__/\         /  /\     
+  $blue      /  /:/_      /  /\         /  /\   $purple   |  |::\       /  /::\    
+  $blue     /  /:/ /\    /  /:/        /  /:/   $purple   |  |:|:\     /  /:/\:\   
+  $blue    /  /:/_/::\  /__/::\       /  /:/    $purple __|__|:|\:\   /  /:/~/::\  
+  $blue   /__/:/__\/\:\ \__\/\:\__   /  /::\    $purple/__/::::| \:\ /__/:/ /:/\:\ 
+  $blue   \  \:\ /~~/:/    \  \:\/\ /__/:/\:\   $purple\  \:\~~\__\/ \  \:\/:/__\/ 
+  $blue    \  \:\  /:/      \__\::/ \__\/  \:\  $purple \  \:\        \  \::/      
+  $blue     \  \:\/:/       /__/:/       \  \:\ $purple  \  \:\        \  \:\      
+  $blue      \  \::/        \__\/         \__\/ $purple   \  \:\        \  \:\     
+  $blue       \__\/                             $purple    \__\/         \__\/            
+       
+  $clear$italic$blue                                   https://github.com/forTEXT/gitma
+                                                                                                   
+  $clear"
 }
 
 until [ "$selection" = "0" ]; do
   clear
   print_logo
   echo -ne "
-    $(color_red 'https://github.com/forTEXT/gitma')
-
-
+    
     $(color_blue 1):  Run jupyter
     $(color_blue 2):  Update GitMA
-    $(color_blue 3):  Reinstall demo files (all changes will be lost)
+    $(color_blue 3):  Reinstall demo files $(color_red '(all changes will be lost!)')
  
-    $(color_red 0):  Exit
+    $(color_red q):  Exit
 
-    $(color_blue Enter selection): "
+    $bold$(color_blue Enter selection): "
   read selection
 
   case $selection in
-    1 ) clear ; run_jupyter ; press_enter ;;
-    2 ) clear ; update_gitma ; press_enter ;;
-    3 ) clear ; reinstall_demo ; press_enter ;;
-    0 ) clear ; exit ;;
-    * ) clear ; incorrect_selection ; press_enter ;;
+    1 )                     clear ; run_jupyter ; press_enter ;;
+    2 )                     clear ; update_gitma ; press_enter ;;
+    3 )                     clear ; reinstall_demo ; press_enter ;;
+    0 | x | X | q | ":q" )  clear ; exit ;;
+    * )                     clear ; incorrect_selection ; press_enter ;;
   esac
 done
