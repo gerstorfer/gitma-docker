@@ -41,11 +41,16 @@ run_jupyter() {
 
 update_gitma() {
      echo ""
+     echo "$(color_blue 'Updating conda')"
+     echo ""
+     conda update -y -n gitma --all
+     echo ""
      echo "$(color_blue 'Updating GitMA')"
      echo ""
      source /opt/conda/bin/activate \
   && conda activate gitma \
   && pip install --upgrade git+https://github.com/forTEXT/gitma \
+  && pip install --upgrade pygamma-agreement \
   && conda deactivate
 }
 
@@ -62,13 +67,13 @@ reinstall_demo(){
 
 press_enter() {
   echo ""
-  echo "$bold$(color_blue 'Press Enter to continue')"
+  echo -e "$bold$(color_blue 'Press Enter to continue')"
   read
   clear
 }
 
 incorrect_selection() {
-  echo "$(color_red 'Incorrect selection!') Try again."
+  echo -e "$(color_red 'Incorrect selection!') Try again."
 }
 
 print_logo(){
