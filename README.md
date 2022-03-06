@@ -11,3 +11,5 @@ And run with:
 ```
 docker run -it --publish 8888:8888 --name gitma-demo gerstorfer/gitma-demo:latest /bin/bash
 ```
+
+![screenshot](screenshot.png)
