@@ -1,15 +1,15 @@
 #!/bin/bash
 
-red='\e[31m'
-green='\e[32m'
-yellow='\e[33m'
-blue='\e[34m'
-purple='\e[35m'
+red='\033[31m'
+green='\033[32m'
+yellow='\033[33m'
+blue='\033[34m'
+purple='\033[35m'
 
-bold='\e[1m'
-italic='\e[3m'
-ul='\e[4m'
-clear='\e[0m'
+bold='\033[1m'
+italic='\033[3m'
+ul='\033[4m'
+clear='\033[0m'
 
 color_red(){
   echo -ne $red$1$clear
