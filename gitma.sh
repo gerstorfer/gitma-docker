@@ -35,7 +35,7 @@ run_jupyter() {
            --ip='*' \
            --port=8888 \
            --no-browser \
-           --allow-root
+           --allow-root \
      conda deactivate 
 }
 

@@ -37,4 +37,4 @@ RUN git clone https://github.com/forTEXT/gitma.git ./src \
   && conda deactivate
 
 COPY gitma.sh .
-ENTRYPOINT ["/bin/bash", "-c", "bash ./gitma.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "./gitma.sh"]
