@@ -9,7 +9,7 @@ docker pull gerstorfer/gitma-demo:latest
 And run with: 
 
 ```
-docker run -it --publish 8888:8888 --name gitma-demo gerstorfer/gitma-demo:latest /bin/bash
+docker run -it --publish 8888:8888 --name gitma-demo gerstorfer/gitma-demo:latest 
 ```
 
 ![screenshot](screenshot.png)
