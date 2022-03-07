@@ -13,3 +13,9 @@ docker run -it --publish 8888:8888 --name gitma-demo gerstorfer/gitma-demo:lates
 ```
 
 ![screenshot](screenshot.png)
+
+To start the container again later, use:
+
+```
+docker start -ai gitma-demo
+```
