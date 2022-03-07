@@ -1,6 +1,6 @@
 # GitMA-docker
 
-Create a docker image, based on condaforge/miniforge3 and push it to docker hub. Get the image with:
+Create a docker image, based on [conda-forge](https://conda-forge.org) and push it to docker hub. Get the image with:
 
 ```
 docker pull gerstorfer/gitma-demo:latest
