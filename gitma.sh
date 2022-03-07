@@ -36,7 +36,7 @@ run_jupyter() {
            --port=8888 \
            --no-browser \
            --allow-root \
-     conda deactivate 
+  && conda deactivate 
 }
 
 update_gitma() {
@@ -55,14 +55,12 @@ update_gitma() {
 }
 
 reinstall_demo(){
-     echo ""
-     echo "$(color_red 'Deleting old files')"
-     echo ""
-     rm -rf ./src
-     source /opt/conda/bin/activate \
-  && conda activate gitma \
-  && echo "Cloning GitMA demo files"; git clone https://github.com/forTEXT/gitma.git ./src \
-  && conda deactivate
+   echo ""
+   echo "$(color_red 'Deleting old files')"
+   echo ""
+   rm -rf ./src
+   echo "Cloning GitMA demo files"
+   git clone https://github.com/forTEXT/gitma.git ./src 
 }
 
 press_enter() {
@@ -107,7 +105,7 @@ until [ "$selection" = "0" ]; do
  
     $(color_red q):  Exit
 
-    $bold$(color_blue Enter selection): "
+    $bold$(color_blue 'Enter selection'): "
   read selection
 
   case $selection in
