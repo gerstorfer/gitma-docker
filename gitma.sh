@@ -56,7 +56,7 @@ update_gitma() {
 
 reinstall_demo(){
    echo ""
-   echo "$(color_red 'Deleting old files')"
+   echo "$(color_red 'Removing old GitMA demo files')"
    echo ""
    rm -rf ./src
    echo "Cloning GitMA demo files"
@@ -65,12 +65,13 @@ reinstall_demo(){
 
 press_enter() {
   echo ""
-  echo -e "$bold$(color_blue 'Press Enter to continue')"
+  echo -e "$bold$(color_blue 'Press Enter to continue ')"
   read
   clear
 }
 
 incorrect_selection() {
+  echo ""
   echo -e "$(color_red 'Incorrect selection!') Try again."
 }
 
