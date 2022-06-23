@@ -1,6 +1,6 @@
 FROM condaforge/miniforge3
 LABEL maintainer="GitMA Team" \
-  version="0.0.3"
+  version="0.0.4"
 
 WORKDIR /opt/gitma
 
@@ -31,6 +31,7 @@ RUN git clone https://github.com/forTEXT/gitma.git ./src \
   && conda clean --all \
   && source /opt/conda/bin/activate \
   && conda activate gitma \
+  && conda install git pip \
   && pip install \ 
   git+https://github.com/forTEXT/gitma \
   pygamma-agreement \
