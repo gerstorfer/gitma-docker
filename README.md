@@ -1,4 +1,4 @@
-# GitMA-docker
+# [GitMA](https://github.com/forTEXT/gitma)-docker
 
 Create a docker image, based on [conda-forge](https://conda-forge.org) and push it to docker hub. Get the image with:
 
