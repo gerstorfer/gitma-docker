@@ -18,6 +18,7 @@ RUN git clone https://github.com/forTEXT/gitma.git ./src \
   && conda init bash \
   && conda create -q -y -n gitma \
   && conda install -y -c conda-forge -n gitma\
+  git pip \
   glpk \
   cvxopt \
   qdldl-python \
@@ -32,12 +33,7 @@ RUN git clone https://github.com/forTEXT/gitma.git ./src \
   spacy \
   && source /opt/conda/bin/activate \
   && conda activate gitma \
-<<<<<<< HEAD
   && python -m pip install \ 
-=======
-  && conda install git pip \
-  && pip install \ 
->>>>>>> 274470e0f11036cee558617243f1d2cebf53d4f1
   git+https://github.com/forTEXT/gitma \
   "pygamma-agreement[CBC]" \
   && conda clean -afy \
