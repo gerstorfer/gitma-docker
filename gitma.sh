@@ -25,33 +25,33 @@ color_blue(){
 }
 
 run_jupyter() {
-     echo ""
-     echo "$(color_blue 'Starting jupyter')"
-     echo ""
-     source /opt/conda/bin/activate \
-  && conda activate gitma \
-  && jupyter notebook \
-           --notebook-dir=./src/demo_notebooks/ \
-           --ip='*' \
-           --port=8888 \
-           --no-browser \
-           --allow-root \
-  && conda deactivate 
+ echo ""
+ echo "$(color_blue 'Starting jupyter')"
+ echo ""
+ source /opt/conda/bin/activate \
+ conda activate gitma 
+ jupyter notebook \
+   --notebook-dir=./src/demo_notebooks/ \
+   --ip='*' \
+   --port=8888 \
+   --no-browser \
+   --allow-root 
+  conda deactivate 
 }
 
 update_gitma() {
-     echo ""
-     echo "$(color_blue 'Updating conda')"
-     echo ""
-     conda update -y -n gitma --all
-     echo ""
-     echo "$(color_blue 'Updating GitMA')"
-     echo ""
-     source /opt/conda/bin/activate \
-  && conda activate gitma \
-  && pip install --upgrade git+https://github.com/forTEXT/gitma \
-  && pip install --upgrade pygamma-agreement \
-  && conda deactivate
+   source /opt/conda/bin/activate  
+   conda activate gitma 
+   echo ""
+   echo "$(color_blue 'Updating conda')"
+   echo ""
+   conda update -y -n gitma --all
+   echo ""
+   echo "$(color_blue 'Updating GitMA')"
+   echo ""
+   python -m pip install --upgrade git+https://github.com/forTEXT/gitma 
+   python -m pip install --upgrade "pygamma-agreement[CBC]" 
+   conda deactivateV
 }
 
 reinstall_demo(){
@@ -91,7 +91,7 @@ print_logo(){
   $blue       \__\/                             $purple    \__\/         \__\/            
        
   $clear$italic$blue                                   https://github.com/forTEXT/gitma
-                                                                                                   
+  $clear$italic$blue                                   v0.0.4 2023-02-14
   $clear"
 }
 
