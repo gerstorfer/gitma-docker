@@ -1,4 +1,6 @@
 #!/bin/bash
+source /opt/conda/bin/activate  
+conda activate gitma 
 
 red='\033[31m'
 green='\033[32m'
@@ -28,20 +30,15 @@ run_jupyter() {
  echo ""
  echo "$(color_blue 'Starting jupyter')"
  echo ""
- source /opt/conda/bin/activate \
- conda activate gitma 
  jupyter lab \
    --notebook-dir=./src/demo_notebooks/ \
    --ip='*' \
    --port=8888 \
    --no-browser \
    --allow-root 
-  conda deactivate 
 }
 
 update_gitma() {
-   source /opt/conda/bin/activate  
-   conda activate gitma 
    echo ""
    echo "$(color_blue 'Updating conda')"
    echo ""
@@ -51,7 +48,6 @@ update_gitma() {
    echo ""
    python -m pip install --upgrade git+https://github.com/forTEXT/gitma 
    python -m pip install --upgrade "pygamma-agreement[CBC]" 
-   conda deactivate
 }
 
 reinstall_demo(){
