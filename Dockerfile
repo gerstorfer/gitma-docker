@@ -1,40 +1,46 @@
-FROM condaforge/miniforge3
+FROM  condaforge/miniforge3
 LABEL maintainer="GitMA Team" \
-  version="0.0.4"
+      version="0.0.5"
 
 WORKDIR /opt/gitma
 
 SHELL ["/bin/bash", "-c"]
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update \
-  && apt-get install -y \
-  build-essential cmake\
-  git \
-  coinor-cbc coinor-libcbc-dev \
-  && apt-get clean -y
+RUN    apt-get update \
+    && apt-get install -y \
+          build-essential cmake\
+          git \
+    && apt-get clean -y
 
-RUN git clone https://github.com/forTEXT/gitma.git ./src \
-  && conda init bash \
-  && conda create -q -y -n gitma \
-  && conda install -y -c conda-forge -n gitma\
-  git pip \
-  glpk \
-  cvxopt \
-  qdldl-python \
-  jupyter \
-  matplotlib \
-  networkx \
-  nltk \
-  pandas \
-  plotly \
-  pygit2 \
-  scipy \
-  spacy \
+RUN    git clone https://github.com/forTEXT/gitma.git ./src \
+    && conda init bash \
+    && conda create -y \
+        --name gitma  \
+        --channel conda-forge \
+            coin-or-cbc \
+            cvxopt=1.2.7 \
+            cvxpy \
+            glpk \
+            jupyterlab \
+            matplotlib \
+            networkx \
+            nltk \
+            numpy \
+            pandas \
+            pip \
+            plotly \
+            pygit2 \
+            python-gitlab \
+            qdldl-python \
+            scipy \
+            spacy \
+            tabulate \
+            python=3.9 \
   && source /opt/conda/bin/activate \
   && conda activate gitma \
   && python -m pip install \ 
-  git+https://github.com/forTEXT/gitma \
+  .src \
   "pygamma-agreement[CBC]" \
   && conda clean -afy \
   && conda deactivate

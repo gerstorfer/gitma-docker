@@ -30,7 +30,7 @@ run_jupyter() {
  echo ""
  source /opt/conda/bin/activate \
  conda activate gitma 
- jupyter notebook \
+ jupyter lab \
    --notebook-dir=./src/demo_notebooks/ \
    --ip='*' \
    --port=8888 \
@@ -51,7 +51,7 @@ update_gitma() {
    echo ""
    python -m pip install --upgrade git+https://github.com/forTEXT/gitma 
    python -m pip install --upgrade "pygamma-agreement[CBC]" 
-   conda deactivateV
+   conda deactivate
 }
 
 reinstall_demo(){
@@ -91,7 +91,7 @@ print_logo(){
   $blue       \__\/                             $purple    \__\/         \__\/            
        
   $clear$italic$blue                                   https://github.com/forTEXT/gitma
-  $clear$italic$blue                                   v0.0.4 2023-02-14
+  $clear$italic$blue                                   v0.0.5 2023-02-17
   $clear"
 }
 
