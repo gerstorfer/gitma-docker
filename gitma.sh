@@ -87,7 +87,8 @@ print_logo(){
   $blue       \__\/                             $purple    \__\/         \__\/            
        
   $clear$italic$blue                                   https://github.com/forTEXT/gitma
-  $clear$italic$blue                                   v0.0.5 2023-02-17
+  $clear$italic$blue                                   v0.0.6 2023-10-19
+  $clear$italic$blue                                   CATMA 7
   $clear"
 }
 
