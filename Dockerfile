@@ -1,6 +1,6 @@
 FROM  condaforge/miniforge3
 LABEL maintainer="GitMA Team" \
-      version="0.0.6"
+      version="0.0.8"
 
 WORKDIR /opt/gitma
 
@@ -8,10 +8,15 @@ SHELL ["/bin/bash", "-c"]
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
-    && apt-get install -y \
+    && apt-get install -y --fix-missing \
         build-essential cmake\
         git \
+        neovim \
+        bash \
+        curl \
     && apt-get clean -y
+
+RUN ln -sf /bin/bash /bin/sh
 
 RUN git clone https://github.com/forTEXT/gitma.git ./src
 
