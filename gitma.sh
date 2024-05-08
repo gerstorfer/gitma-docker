@@ -99,8 +99,7 @@ until [ "$selection" = "0" ]; do
   echo -ne "
     
     $(color_blue 1):  Run jupyter
-    $(color_blue 2):  Update GitMA
-    $(color_blue 3):  Reinstall demo files $(color_red '(all changes will be lost!)')
+    $(color_blue 2):  Reinstall demo files $(color_red '(all changes will be lost!)')
  
     $(color_red q):  Exit
 
@@ -110,7 +109,11 @@ until [ "$selection" = "0" ]; do
   case $selection in
     1 )                     clear ; run_jupyter ; press_enter ;;
     2 )                     clear ; reinstall_demo ; press_enter ;;
+<<<<<<< HEAD
     # 3 )                     clear ; update_gitma ; press_enter ;;
+=======
+    3 | u | U )             clear ; update_gitma ; press_enter ;;
+>>>>>>> 3276186 (config(selection): removed menu option 'Update GitMA')
     0 | x | X | q | ":q" )  clear ; exit ;;
     * )                     clear ; incorrect_selection ; press_enter ;;
   esac
