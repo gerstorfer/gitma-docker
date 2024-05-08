@@ -1,6 +1,6 @@
 FROM  condaforge/miniforge3
 LABEL maintainer="GitMA Team" \
-      version="0.0.8"
+      version="0.0.9"
 
 WORKDIR /opt/gitma
 
@@ -18,7 +18,7 @@ RUN apt-get update \
 
 RUN ln -sf /bin/bash /bin/sh
 
-RUN git clone https://github.com/forTEXT/gitma.git ./src
+RUN git clone https://github.com/forTEXT/gitma.git ./src && cp -R ./src ./backup
 
 RUN conda create --yes \
     --name gitma  \

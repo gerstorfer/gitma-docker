@@ -55,8 +55,9 @@ reinstall_demo(){
    echo "$(color_red 'Removing old GitMA demo files')"
    echo ""
    rm -rf ./src
-   echo "Cloning GitMA demo files"
-   git clone https://github.com/forTEXT/gitma.git ./src 
+   echo "Restoring GitMA demo files"
+   # git clone https://github.com/forTEXT/gitma.git ./src 
+   cp -R ./backup ./src
 }
 
 press_enter() {
@@ -87,7 +88,7 @@ print_logo(){
   $blue       \__\/                             $purple    \__\/         \__\/            
        
   $clear$italic$blue                                   https://github.com/forTEXT/gitma
-  $clear$italic$blue                                   v0.0.8 2023-11-14
+  $clear$italic$blue                                   v0.0.9 2024-05-08
   $clear$italic$blue                                   CATMA 7
   $clear"
 }
@@ -108,8 +109,8 @@ until [ "$selection" = "0" ]; do
 
   case $selection in
     1 )                     clear ; run_jupyter ; press_enter ;;
-    2 )                     clear ; update_gitma ; press_enter ;;
-    3 )                     clear ; reinstall_demo ; press_enter ;;
+    2 )                     clear ; reinstall_demo ; press_enter ;;
+    # 3 )                     clear ; update_gitma ; press_enter ;;
     0 | x | X | q | ":q" )  clear ; exit ;;
     * )                     clear ; incorrect_selection ; press_enter ;;
   esac
