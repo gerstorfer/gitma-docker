@@ -40,15 +40,16 @@ RUN conda create --yes \
         python-gitlab \
         qdldl-python \
         scipy \
-        spacy \
         tabulate
          
 RUN source /opt/conda/bin/activate \
     && conda activate gitma \
     && conda init bash \
+    && pip install -U pip setuptools wheel \
     && python -m pip install \ 
-        git+https://github.com/forTEXT/gitma \
+        spacy \
         "pygamma-agreement[CBC]"==0.5.6 \
+        git+https://github.com/forTEXT/gitma \
     && conda clean -afy \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
